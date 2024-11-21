@@ -1,0 +1,202 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #239ac2;
+}
+
+.birthdayCard {
+  position: relative;
+  width: 350px; /* Increased from 250px */
+  height: 700px; /* Increased from 350px */
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: perspective(2500px);
+  transition: 1s;
+}
+
+.birthdayCard:hover {
+  transform: perspective(2500px) rotate(5deg);
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
+    0 10px 100px rgba(0, 0, 0, 0.5);
+}
+
+.birthdayCard:hover .cardFront {
+  transform: rotateY(-160deg);
+}
+
+.birthdayCard:hover .happy {
+  visibility: hidden;
+}
+
+.cardFront {
+  position: relative;
+  background-color: #fff;
+  width: 350px; /* Match card width */
+  height: 700px; /* Match card height */
+  overflow: hidden;
+  transform-origin: left;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
+    30px 0 50px rgba(0, 0, 0, 0.4);
+  transition: 0.6s;
+}
+
+.happy {
+  font-family: Tahoma, sans-serif;
+  text-align: center;
+  margin: 40px; /* Slightly increased margin */
+  background-image: linear-gradient(120deg, #ffd856 0%, #f98c6e 100%);
+  transition: 0.1s;
+  font-size: 24px; /* Increased font size */
+}
+
+.balloons {
+  position: absolute;
+}
+
+.balloon-1, .balloon-2, .balloon-3, .balloon-4 {
+  position: absolute;
+  width: 120px; /* Increased from 85px */
+  height: 135px; /* Increased from 95px */
+  border-radius: 50%;
+}
+
+.balloon-1 {
+  background-color: rgba(255, 40, 90, 0.7);
+  left: -20px; /* Adjusted */
+  top: 70px; /* Adjusted */
+}
+
+.balloon-2 {
+  background-color: rgba(9, 215, 160, 0.7);
+  left: 70px; /* Adjusted */
+  top: 30px; /* Adjusted */
+}
+
+.balloon-3 {
+  background-color: rgba(255, 186, 26, 0.7);
+  left: 160px; /* Adjusted */
+  top: 70px; /* Adjusted */
+}
+
+.balloon-4 {
+  background-color: rgba(12, 122, 159, 0.7);
+  left: 240px; /* Adjusted */
+  top: 70px; /* Adjusted */
+}
+
+.balloon-1::before, .balloon-2::before, .balloon-3::before, .balloon-4::before {
+  content: "";
+  position: absolute;
+  width: 2px; /* Slightly wider */
+  height: 200px; /* Increased */
+  background-color: #ffc848;
+  top: 135px; /* Adjusted */
+  left: 60px; /* Adjusted */
+}
+
+.balloon-1::after, .balloon-2::after, .balloon-3::after, .balloon-4::after {
+  content: "";
+  position: absolute;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  top: 134px; /* Adjusted */
+  left: 52px; /* Adjusted */
+}
+
+.balloon-1::after {
+  border-bottom: 15px solid #ff3e6b;
+}
+
+.balloon-2::after {
+  border-bottom: 15px solid #04b183;
+}
+
+.balloon-3::after {
+  border-bottom: 15px solid #ffc94c;
+}
+
+.balloon-4::after {
+  border-bottom: 15px solid #13a9bd;
+}
+
+.cardInside {
+  position: absolute;
+  background-color: #fff;
+  width: 350px; /* Match card width */
+  height: 700px; /* Match card height */
+  z-index: -1;
+  left: 0;
+  top: 0;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  font-family: "Geist Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 40;
+  font-style: normal;
+  font-size: 16px; /* Increased for readability */
+}
+
+.name {
+  position: absolute;
+  left: 200px; /* Adjusted */
+  top: 600px; /* Adjusted */
+  color: #333;
+  font-size: 18px; /* Added font size */
+}
+
+.back {
+  font-family: Tahoma, sans-serif;
+  color: #333;
+  text-align: center;
+  margin: 40px; /* Increased margin */
+  outline-color: #333;
+  outline-style: dotted;
+}
+/* Mobile styles */
+@media (min-width: 769px) {
+  .birthdayCard {
+    width: 450px; /* Larger on desktop */
+    height: 1000px; /* Adjusted height */
+  }
+
+  .cardFront,
+  .cardInside {
+    width: 450px;
+    height: 1000px;
+  }
+
+  .happy {
+    font-size: 28px; /* Larger font */
+    margin: 50px;
+  }
+
+  .balloon-1, .balloon-2, .balloon-3, .balloon-4 {
+    width: 140px; /* Larger balloons */
+    height: 160px;
+  }
+
+  .name {
+    left: 250px;
+    top: 700px;
+    font-size: 20px;
+  }
+}
+
+/* Anime-style image styling */
+.cardInside img {
+  max-width: 100px; /* Adjust as needed */
+  max-height: 100px; /* Adjust as needed */
+  border-radius: 10px; /* Soft corners */
+  object-fit: cover; /* Maintain aspect ratio */
+  margin: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.cardInside img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
